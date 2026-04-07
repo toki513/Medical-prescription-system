@@ -1,5 +1,4 @@
 from sqlalchemy import String,ForeignKey,Column,Boolean,DateTime,func
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship,Mapped,mapped_column
 import uuid
 from datetime import datetime
