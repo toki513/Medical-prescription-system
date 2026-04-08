@@ -12,7 +12,7 @@ class PrescriptionCreate(BaseModel):
 class PrescriptionResponse(BaseModel):
     id:UUID
     patient_name:str
-    medication:str
+    medication
     created_at:datetime
     doctor_id:UUID
     
