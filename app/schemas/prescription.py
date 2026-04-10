@@ -13,7 +13,7 @@ class PrescriptionResponse(BaseModel):
     id:UUID
     patient_name:str
     medication:str
-    created_at:datetime
+    created_at:
     doctor_id:UUID
     
     model_config={"from_attributes":True}
