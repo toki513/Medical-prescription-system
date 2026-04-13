@@ -17,7 +17,7 @@ class UserResponse(BaseModel):
     username:str
     email:EmailStr
     role:str
-    id:UUID
+    id:int
     created_at:datetime
     
     model_config={"from_attributes":True}
