@@ -36,4 +36,17 @@ async def login(user_data:UserLogin,db:DB):
     result=await db.execute(select(User).where(User.email == user_data.email))
     user = result.scalars().first()
     
+    if not user or not verify_password(user_data.password,user.hashed_password):
+        raise HTTPException(status_code=401,details= "Incorrect email or password")
     
+    token= create_access_token(data={"sub":str(user.id), "role":user.role})
+    return {"access_token":token,"token_type":"bearer"}
+
+
+@router.post("/logout")
+async def logout(current_user:CurrentUser):
+    return {"message":f"Goodbye,{current_user.full_name}!"}
+
+@router.get("/me",response_model=UserResponse)
+async def get_me(current_user:CurrentUser):
+    return current_user
